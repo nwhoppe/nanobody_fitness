@@ -17,7 +17,9 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--check_cdrs', action='store_true')
     parser.add_argument('-n', '--sequence_name', help='string to put after > symbol for each sequence')
     args = parser.parse_args()
-    id_seq_dict = parse_identifier_sequence_from_fasta(args.fasta, args.check_cdrs)
+
+    cdr_length_limits = {1: [7], 2: [13], 3: [25]}
+    id_seq_dict = parse_identifier_sequence_from_fasta(args.fasta, args.check_cdrs, cdr_length_limits=cdr_length_limits)
     if args.sequence_name:
         base_name = args.sequence_name
     else:
