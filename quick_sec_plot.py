@@ -15,13 +15,14 @@ if __name__ == '__main__':
     plotting_df = pd.DataFrame()
     sns.set_context('talk')
     i = 0
-    colors = ['dimgray', 'royalblue']
+    colors = ['dimgray', 'royalblue', 'firebrick', 'royalblue']
+    # labels = ['GPR68-mGq', 'GPR68-mGq complex', 'KCTD12 and GPR85']
     for sec_csv in args.input_csvs:
 
         sec_df = pd.read_csv(sec_csv, header=1)
-        if sec_csv == args.input_csvs[1]:
-            sec_df += 0.5
-        lp = sns.lineplot(sec_df.iloc[:, 0], sec_df.iloc[:, 1], color=colors[i], linewidth=5)
+        # if sec_csv == args.input_csvs[1]:
+        #     sec_df += 0.5
+        lp = sns.lineplot(sec_df.iloc[:, 0], sec_df.iloc[:, 1], color=colors[i], linewidth=5)  # label=labels[i])
         i += 1
     sns.despine()
     lp.set(xlim=(args.xmin, args.xmax))
